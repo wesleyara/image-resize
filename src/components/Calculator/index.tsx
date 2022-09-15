@@ -32,61 +32,96 @@ export const Calculator = ({
     setWantedWidth(0);
   }, [currentWidth, currentHeight]);
 
-  useEffect(() => {
-    if (proportion !== 0 && wantedWidth !== 0) {
-      setWantedHeight(Math.round(wantedWidth / proportion));
-    }
+  const [selected, setSelected] = useState<"width" | "height">("width");
 
-    if (wantedWidth === 0) {
-      setWantedHeight(0);
-    }
-  }, [proportion, wantedWidth]);
-
-  useEffect(() => {
+  const handleCalculate = () => {
     if (proportion !== 0 && wantedHeight !== 0) {
       setWantedWidth(Math.round(wantedHeight * proportion));
     }
 
-    if (wantedHeight === 0) {
-      setWantedWidth(0);
+    if (proportion !== 0 && wantedWidth !== 0) {
+      setWantedHeight(Math.round(wantedWidth / proportion));
     }
-  }, [proportion, wantedHeight]);
+  };
+
+  const handleClear = () => {
+    setWantedHeight(0);
+    setWantedWidth(0);
+  };
 
   return (
-    <section className="flex flex-col gap-4 items-center mt-24">
-      <h2 className="text-3xl">Resize Calculator</h2>
-      <div className="flex items-center gap-4">
+    <section className="flex flex-col gap-2 items-center mt-24 border-[1px] border-black rounded-md w-[460px] mx-auto p-10">
+      <div className="flex items-center justify-center gap-4">
         <span className="flex flex-col w-[200px] gap-2">
           <input
+            className="w-[200px]"
             type="number"
             placeholder="Width atual"
             onChange={e => setCurrentWidth(Number(e.target.value))}
           />
           <input
+            className="w-[200px]"
             type="number"
             placeholder="Height atual"
             onChange={e => setCurrentHeight(Number(e.target.value))}
           />
         </span>
         <span className="flex flex-col w-[200px] gap-2">
+          <select
+            onChange={e => setSelected(e.target.value as "width" | "height")}
+            value={selected}
+          >
+            <option value="width">Width</option>
+            <option value="height">Height</option>
+          </select>
           <input
             type="number"
-            placeholder="Width desejado"
+            placeholder={
+              selected === "height" ? "Height desejado" : "Width desejado"
+            }
             disabled={disabled}
             className={`${disabled ? "bg-gray-200 cursor-not-allowed" : ""}`}
-            onChange={e => setWantedWidth(Math.round(Number(e.target.value)))}
-            value={wantedWidth === 0 ? "" : wantedWidth}
-          />
-          <input
-            type="number"
-            placeholder="Height desejado"
-            disabled={disabled}
-            className={`${disabled ? "bg-gray-200 cursor-not-allowed" : ""}`}
-            onChange={e => setWantedHeight(Math.round(Number(e.target.value)))}
-            value={wantedHeight === 0 ? "" : wantedHeight}
+            onChange={e =>
+              selected === "height"
+                ? setWantedHeight(Math.round(Number(e.target.value)))
+                : setWantedWidth(Math.round(Number(e.target.value)))
+            }
+            value={
+              selected === "height"
+                ? wantedHeight === 0
+                  ? ""
+                  : wantedHeight
+                : wantedWidth === 0
+                ? ""
+                : wantedWidth
+            }
           />
         </span>
       </div>
+      <span>Result: </span>
+      <span className="h-8">
+        {wantedHeight !== 0 && wantedWidth !== 0 && (
+          <>
+            {wantedWidth} Width x {wantedHeight} Height
+          </>
+        )}
+      </span>
+      <span className="flex justify-center gap-5">
+        <button
+          className="border-[1px] border-white p-3 rounded-md hover:bg-white hover:text-black hover:border-black cursor-pointer bg-green-600 text-white"
+          disabled={disabled}
+          onClick={handleCalculate}
+        >
+          Calcular
+        </button>
+        <button
+          className="border-[1px] border-white p-3 rounded-md hover:bg-white hover:text-black hover:border-black cursor-pointer bg-green-600 text-white"
+          disabled={disabled}
+          onClick={handleClear}
+        >
+          Limpar
+        </button>
+      </span>
     </section>
   );
 };

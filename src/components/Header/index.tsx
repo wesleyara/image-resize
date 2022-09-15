@@ -1,7 +1,7 @@
 export const Header = () => {
   return (
-    <header className="text-5xl flex justify-center p-6 bg-slate-500 text-white">
-      <h1>Image Resize</h1>
+    <header className="text-5xl flex justify-center p-6 bg-green-600 text-white">
+      <h1>Resize Calculator</h1>
     </header>
   );
 };
