@@ -13,7 +13,6 @@ select {
   background-color: white;
 }
 
-
 /* Chrome e outros */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -22,6 +21,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
