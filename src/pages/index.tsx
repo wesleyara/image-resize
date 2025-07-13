@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Head from "next/head";
 import { useState } from "react";
 
 import { Calculator } from "../components/Calculator";
@@ -10,13 +11,25 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Header />
-      <Calculator
-        setCurrentWidth={setCurrentWidth}
-        setCurrentHeight={setCurrentHeight}
-        currentWidth={currentWidth}
-        currentHeight={currentHeight}
-      />
+      <Head>
+        <title>Image Resize Calculator - Perfect Proportions</title>
+        <meta
+          name="description"
+          content="Calculate perfect proportions for your image resizing needs with our modern calculator tool."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <div className="min-h-screen">
+        <Header />
+        <Calculator
+          setCurrentWidth={setCurrentWidth}
+          setCurrentHeight={setCurrentHeight}
+          currentWidth={currentWidth}
+          currentHeight={currentHeight}
+        />
+      </div>
     </>
   );
 };

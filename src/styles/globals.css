@@ -1,16 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-input {
-  border: 1px solid black;
-  padding: 10px;
+@layer base {
+  html {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-dark-900 via-purple-900 to-primary-900;
+    @apply min-h-screen;
+    @apply text-white;
+  }
 }
 
-select {
-  border: 1px solid black;
-  padding: 12px;
-  background-color: white;
+@layer components {
+  .glass-effect {
+    @apply bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-20;
+    @apply shadow-xl;
+  }
+
+  .input-modern {
+    @apply bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-30;
+    @apply rounded-lg px-4 py-3 text-white placeholder-gray-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent;
+    @apply transition-all duration-200;
+  }
+
+  .input-modern:focus {
+    @apply bg-opacity-20 shadow-glow;
+  }
+
+  .select-modern {
+    @apply bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-30;
+    @apply rounded-lg px-4 py-3 text-white;
+    @apply focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent focus:text-black;
+    @apply transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-purple-600 to-primary-600;
+    @apply hover:from-purple-700 hover:to-primary-700;
+    @apply text-white font-medium px-6 py-3 rounded-lg;
+    @apply shadow-lg hover:shadow-glow;
+    @apply transition-all duration-200;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply disabled:hover:shadow-none;
+  }
+
+  .btn-secondary {
+    @apply bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-30;
+    @apply hover:bg-opacity-20;
+    @apply text-white font-medium px-6 py-3 rounded-lg;
+    @apply shadow-lg hover:shadow-glow-blue;
+    @apply transition-all duration-200;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply disabled:hover:shadow-none;
+  }
 }
 
 /* Chrome e outros */
@@ -23,4 +70,22 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.7);
 }

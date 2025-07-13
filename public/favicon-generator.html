@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Generate Favicon</title>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    "
+  >
+    <h2>Custom Favicon Generator</h2>
+    <p>To replace the default favicon, you can:</p>
+    <ol>
+      <li>
+        Use an online favicon generator like
+        <a href="https://favicon.io" target="_blank">favicon.io</a>
+      </li>
+      <li>Create a 32x32 pixel PNG image with your calculator icon</li>
+      <li>Replace the file at <code>public/favicon.ico</code></li>
+    </ol>
+
+    <h3>Suggested Design:</h3>
+    <ul>
+      <li>Background: Purple gradient (#9333ea to #3b82f6)</li>
+      <li>Icon: White calculator/resize symbol</li>
+      <li>Style: Modern, minimal design</li>
+    </ul>
+
+    <p>You can also use this SVG code as a starting point:</p>
+    <pre
+      style="
+        background: white;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+      "
+    >
+&lt;svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;defs&gt;
+    &lt;linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"&gt;
+      &lt;stop offset="0%" style="stop-color:#9333ea;stop-opacity:1" /&gt;
+      &lt;stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" /&gt;
+    &lt;/linearGradient&gt;
+  &lt;/defs&gt;
+  &lt;rect width="32" height="32" rx="6" fill="url(#grad)"/&gt;
+  &lt;path d="M8 8h16v16H8z" fill="none" stroke="white" stroke-width="2"/&gt;
+  &lt;path d="M8 16h16M16 8v16" stroke="white" stroke-width="1.5"/&gt;
+&lt;/svg&gt;
+    </pre>
+  </body>
+</html>
